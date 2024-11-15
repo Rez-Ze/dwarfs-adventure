@@ -1,0 +1,21 @@
+#version 330 core
+
+
+out vec4 color;
+
+in vec3 colorOut;
+
+in vec2 textureOut;
+
+uniform sampler2D texture;
+
+void main() {
+	color = texture(texture, textureOut) * vec4(colorOut, 1.0);
+
+
+	//Schwarzen Rand entfernen
+	if(color.a == 0.0)
+	{
+		discard;
+	}
+}
